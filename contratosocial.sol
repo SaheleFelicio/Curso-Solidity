@@ -30,11 +30,11 @@ contract ContratoSocial
            capitalSocioUm = paramcapitalSocioUm;
            capitalSocioDois = paramcapitalSocioDois;
         }
-        function simulaAumentoCapitalSocioUm (uint256 aumentoDeCapital) public view returns (uint256 aumentoCapitalSocioUm)
+        function simulaAumentoDeCapital (uint256 aumentoDeCapital) public view returns (uint256 aumentoDeCapitalSocioUm, uint256 aumentoDeCapitalSocioDois)
         {
-            aumentoCapitalSocioUm = aumentoDeCapital*capitalSocioUm/capitalSocial;
-            return aumentoCapitalSocioUm;
+            aumentoDeCapitalSocioUm = aumentoDeCapital*capitalSocioUm/capitalSocial;
+            aumentoDeCapitalSocioDois = aumentoDeCapital*capitalSocioDois/capitalSocial;
+            return (aumentoDeCapitalSocioUm, aumentoDeCapitalSocioDois);
         }
-                 
 }
      
