@@ -10,6 +10,8 @@ contract ContratoSocial
     uint256 public capitalSocial;
     uint256 public capitalSocioUm;
     uint256 public capitalSocioDois;
+    bool private SocioUmDesejaSubscrever;
+    bool private SocioDoisDesejaSubscrever;
     
     constructor (
         string memory paramsocioUm,
@@ -36,5 +38,15 @@ contract ContratoSocial
             aumentoDeCapitalSocioDois = aumentoDeCapital*capitalSocioDois/capitalSocial;
             return (aumentoDeCapitalSocioUm, aumentoDeCapitalSocioDois);
         }
+        function aumentoDeCapitalSocialAntiDiluicaoImediataMajoritario (uint256 valorDeSubscricaoSocioDois, uint256 valorDeSubscricaoSocioUm, uint256 valorDeSubscricaoTotal) public
+        {
+            if (valorDeSubscricaoSocioDois > valorDeSubscricaoTotal*capitalSocioDois/100)
+            {
+                 valorDeSubscricaoSocioDois = valorDeSubscricaoTotal*capitalSocioDois/100;
+            }
+            valorDeSubscricaoTotal = valorDeSubscricaoSocioUm + valorDeSubscricaoSocioDois;
+            capitalSocial = capitalSocial + valorDeSubscricaoTotal;
+            capitalSocioUm = capitalSocioUm + valorDeSubscricaoSocioUm;
+            capitalSocioDois = capitalSocioDois +valorDeSubscricaoSocioDois;
+        }
 }
-     
