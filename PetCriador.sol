@@ -2,36 +2,35 @@
 
 pragma solidity 0.6.10;
 
-contract Criador 
+contract CriadorDePets 
 {
-    string public criador;
-    string public tutor;
-    string public animal;
-    string public emailTutor;
-    string public especie;
-    string public raca;
-    uint256 public dataDeNascimento;
-    uint256 public dataDeCompra;
-    uint256 public registro;
-    
-    constructor(string memory _criador,
-    string memory _tutor,
-    string memory _animal,
-    string memory _emailTutor,
-    string memory _especie,
-    string memory _raca,
-    uint256 _dataDeNascimento,
-    uint256 _dataDeCompra,
-    uint256 _registro) public 
-    {
-        criador = _criador;
-        tutor = _tutor;
-        animal = _animal;
-        emailTutor = _emailTutor;
-        especie = _especie;
-        raca = _raca;
-        dataDeNascimento = _dataDeNascimento;
-        dataDeCompra + _dataDeCompra;
-        registro = _registro;
+    struct Animal {
+        string especie;
+        string raca;
+        string sexo;
+        address criador;
+        address tutor;
+        string LocalDeNascimento;
+        uint dataDeNascimento;
+        string registro;
     }
-} 
+     
+    Animal[] public animais;
+    
+    function registroDoAnimal(string memory _especie,
+    string memory _raca,
+    string memory _sexo,
+    address _criador,
+    address _tutor,
+    string memory _LocalDeNascimento,
+    uint _dataDeNascimento,
+    string memory _registro) public {
+        Animal memory novoAnimal = Animal (_especie,_raca,_sexo,_criador,_tutor,_LocalDeNascimento,_dataDeNascimento,_registro);
+        animais.push(novoAnimal);
+    }
+    
+    function totalDeAnimais () public view returns (uint) {
+        return animais.length;
+    }
+}
+
