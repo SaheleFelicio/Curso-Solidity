@@ -12,8 +12,7 @@ contract CriadorDePets
         address tutor;
         string LocalDeNascimento;
         uint dataDeNascimento;
-        string certificado;
-    }
+        }
      
     Animal[] public animais;
     
@@ -23,16 +22,13 @@ contract CriadorDePets
     address _criador,
     address _tutor,
     string memory _LocalDeNascimento,
-    uint _dataDeNascimento,
-    string memory _certificado) public {
-        Animal memory novoAnimal = Animal (_nome, _especie,_sexo,_criador,_tutor,_LocalDeNascimento,_dataDeNascimento,_certificado);
+    uint _dataDeNascimento) public {
+        Animal memory novoAnimal = Animal (_nome, _especie,_sexo,_criador,_tutor,_LocalDeNascimento,_dataDeNascimento);
         animais.push(novoAnimal);
-    }
+        }
     
     function totalDeAnimais () public view returns (uint) {
         return animais.length;
     }
 }
-
-
 
