@@ -12,7 +12,7 @@ contract CriadorDePets
         address tutor;
         string LocalDeNascimento;
         uint dataDeNascimento;
-        string registro;
+        string certificado;
     }
      
     Animal[] public animais;
@@ -24,8 +24,8 @@ contract CriadorDePets
     address _tutor,
     string memory _LocalDeNascimento,
     uint _dataDeNascimento,
-    string memory _registro) public {
-        Animal memory novoAnimal = Animal (_nome, _especie,_sexo,_criador,_tutor,_LocalDeNascimento,_dataDeNascimento,_registro);
+    string memory _certificado) public {
+        Animal memory novoAnimal = Animal (_nome, _especie,_sexo,_criador,_tutor,_LocalDeNascimento,_dataDeNascimento,_certificado);
         animais.push(novoAnimal);
     }
     
@@ -33,4 +33,6 @@ contract CriadorDePets
         return animais.length;
     }
 }
+
+
 
